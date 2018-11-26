@@ -1,5 +1,6 @@
 package com.example.shaked.helloworld;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +13,11 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+
+    // By default, these fields are null since they are not primitives
     private EditText editText; // = null
-    private TextView changingTextView;
+    private TextView changingTextView; // = null
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // We got these 2 lines automatically when we created the activity
@@ -23,12 +27,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         // Get references to all the views
         // Which we would like to change dynamically
+
+        // Change the "global" variables (the fields "editText" and "changingTextView")
+        // So that they will be accessed from different methods of the MainActivity class
         editText = findViewById(R.id.editTextIn);
-        Button toastButton = findViewById(R.id.toastButton);
-        Button logButton = findViewById(R.id.logButton);
-        Button textButton = findViewById(R.id.textButton);
         changingTextView = findViewById(R.id.changedTextView);
 
+        // Here we're defining a method-local variable that is NOT accessible
+        // from outside of the onCreate() method
+        // But in our case, we don't care about that so we leave it like this
+        Button textButton = findViewById(R.id.textButton);
+        Button logButton = findViewById(R.id.logButton);
+        Button toastButton = findViewById(R.id.toastButton);
+
+        // "this" refers to the MainActivity object currently in use
+        // the object's data-type is "MainActivity", but:
+        // since it implement the View.OnClickListener, it can also be thought of
+        // as an OnClickListener because it has the onClick() method overwritten
         toastButton.setOnClickListener(this);
         logButton.setOnClickListener(this);
         textButton.setOnClickListener(this);
@@ -36,9 +51,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
+    // If you get an error here, it's probably because you didn't implement the
+    // OnClickListener interface in your MainActivity
+    // When this method is being called, an argument is provided to us
+    // which is the reference the object being clicked on.
     @Override
     public void onClick(View jacobsView) {
+
+        // Check out the view being clicked on's id
         int viewsId = jacobsView.getId();
+
+        // Get the text the EditText contains inside it as a string
+        // This is similar to what we saw in JavaScript's .value property
         String textFromEditText = editText.getText().toString();
 
         if (viewsId == R.id.toastButton) {
@@ -57,8 +82,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         } else {
             // default,
-            // If you reached here - you made a mistake
+            // If you reached here - a view that you didn't though about
+            // when you wrote the conditions above was triggering this onClick
+            // Find it what this view is and how come it got here
 
+            // In this particular code example, the chunk of code will never be reached
         }
     }
 }
