@@ -2,42 +2,30 @@ package com.example.shaked.helloworld;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private int counter = 0;
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // We got these 2 lines automatically when we created the activity
+        // We do not change this
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Get references to all the views
+        // Which we would like to change dynamically
+        EditText editText = findViewById(R.id.editTextIn);
+        Button toastButton = findViewById(R.id.toastButton);
+        Button logButton = findViewById(R.id.logButton);
+        Button textButton = findViewById(R.id.textButton);
+        TextView changingTextView = findViewById(R.id.changedTextView);
 
-        MyClickEvent myClickEvent = new MyClickEvent();
 
-        Button b1 = findViewById(R.id.click1);
-        Button b2 = findViewById(R.id.click2);
-
-
-        b1.setOnClickListener(this);
-        b2.setOnClickListener(this);
     }
 
 
-    @Override
-    public void onClick(View v) {
-
-        if (v.getId() == R.id.click1) {
-            Toast.makeText(this, "Click 1", Toast.LENGTH_SHORT).show();
-        } else if (v.getId() == R.id.click2) {
-            Toast.makeText(this, "Click2: " + counter, Toast.LENGTH_SHORT).show();
-            counter++;
-
-        }
-    }
 }

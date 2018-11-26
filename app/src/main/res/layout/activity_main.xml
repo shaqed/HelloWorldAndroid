@@ -1,23 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="horizontal"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Button
+    <TextView
         android:layout_width="match_parent"
-        android:text="Click1"
-        android:id="@+id/click1"
-        android:layout_weight="1"
+        android:text="Welcome to my cool app"
+        android:textSize="25sp"
+        android:textColor="#c63c19"
         android:layout_height="wrap_content" />
 
-
-    <Button
+    <EditText
         android:layout_width="match_parent"
-        android:text="Click2"
-        android:id="@+id/click2"
-        android:layout_weight="3"
+        android:hint="Enter Text Here"
+        android:id="@+id/editTextIn"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_width="match_parent"
+            android:text="Toast"
+            android:layout_weight="1"
+            android:id="@+id/toastButton"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:text="Log"
+            android:layout_weight="1"
+            android:id="@+id/logButton"
+            android:layout_height="wrap_content" />
+        <Button
+            android:layout_width="match_parent"
+            android:text="Text"
+            android:layout_weight="1"
+            android:id="@+id/textButton"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="This will change"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:id="@+id/changedTextView"
         android:layout_height="wrap_content" />
 
 
